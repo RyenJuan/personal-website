@@ -1,65 +1,96 @@
 <!DOCTYPE html>
 <html>
-
 	<head>
+		<!-- css stylesheet link -->
 		<link rel="stylesheet" href="web3.css">
 
+		<!-- google fonts -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=DM+Sans&family=Montserrat:wght@200;600&display=swap" rel="stylesheet">
 
+		<!-- responsiveness -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 
 		<title>Just a page</title>
 	</head>
 
-	<body id="firstbg">
+	<body>
 		<div class="wrapper">
+			<div class="full-viewport-height" id="firstbg">
+				<canvas class="intro" id="theCanvas"></canvas>
+				<script src="particles.js"></script>
 
-			<canvas class="intro" id="theCanvas"></canvas>
-			<script src="particles.js"> </script>
+				<header>
+					<h1 style="font-weight: normal; margin: 0;">Ryan Huang</h1>
+				</header>
 
-			<header>
-				<h1 style="font-weight: normal; margin: 0;">Ryan Huang</h1>
-			</header>
+				<div id="blueline"></div>
 
-			<div id="blueline"></div>
+				<!-- this has to stay one line or strange spacing ghosts come -->
+				<h1 class="intro" id="typewriter">C:\ <span class="text_1">hello, i'm ryan</span><span class="text_2">mechanical engineer</span><span class="text_3">@Northeastern</span><span class="text_4"></span><span class="text_5">thanks for coming by</span></h1>
 
-			<!-- this has to stay one line or strange spacing ghosts come -->
-			<h1 class="intro" id="typewriter">C:\ <span class="text_1">hello, i'm ryan</span><span class="text_2">mechanical engineer</span><span class="text_3">@Northeastern</span><span class="text_4"></span><span class="text_5">thanks for coming by</span></h1>
+				<div class="intro" id="homepage">
+					<br>
+					<p>Just a mechanical engineer and a self taught programmer</p>
+					<br>
+					<p>I made this website myself as a way to learn web development and also create a portfolio at the same time</p>
 
-			<div class="intro" id="homepage">
-				<br>
-				<p>This website is mainly to let me experiment with web development and double as my portfolio</p>
-				<br>
-				<p>Currently, I'm working towards both my Bachelor's and Master's of Science in Mechanical Engineering with a focus in Mechatronics/Control. </p>
+					<!-- <p>My name is Ryan Huang and I'm currently finishing both my Bachelor's and Master's degrees in Mechanical Engineering.
+						I've gained experiences in multiples fields such as programmable metamaterials, MEP/FP, manufacturing, continuous improvement, etc.
+						In my free time, I've also learned some game development, computer science, and controls for my own projects</p> -->
 
-				<!-- <p>My name is Ryan Huang and I'm currently finishing both my Bachelor's and Master's degrees in Mechanical Engineering.
-					I've gained experiences in multiples fields such as programmable metamaterials, MEP/FP, manufacturing, continuous improvement, etc.
-				   In my free time, I've also learned some game development, computer science, and controls for my own projects</p> -->
+					<br>
+					<p>Scroll down to learn more about me</p>
+				</div>
+			</div>
 
-				<br>
-				<p>Scroll down to learn more about me</p>
+			<div class="full-viewport-height" id="secondbg">
+				<section id="about">
+					<div class="intro" style="font-weight: bold;
+									font-size: 2.75em;
+									position: relative;
+									top: 10vh;">
+							About Me
+					</div>
+				</section>
+				<div class="container">
+					<div class="info intro">
+						<p>Hey yall, <br><br> I'm Ryan Huang, a recent graduate of Northeastern University. I'm passionate for all things engineering, software, and everything in between.
+							My goal is work in interdisciplinary fields like robotics/aerospace that cross mechanical engineering and computer science. <br><br> In a recent project called <b><u>The Avatar</u></b>, I
+							worked on a transparent, climate-controlled chamber with automated droplet injection for fluids research. I wrote the control software for the entire system and led the dehumidifier development.
+						</p>
+					</div>
+
+					<div class="info intro">
+						<p><b>At the present moment,</b><br><br>I'm doing drone visual-localization research at a lab while finishing my Masters in Mechanical Engineering with a focus on Mechatronics/Controls. Between
+							school and work, I've worked on some cool projects you can read about if you keep scrolling.
+							<br><br>Otherwise, you'll usually catch me doing all kinds of sports (paddling, rock climbing, olympic lifting, etc)
+						</p>
+						<!-- <p>Relevant experiences: <br><br>
+							&#8674;<a href=http://me.eng.sunysb.edu/~wanglf/><u>Advanced Composites and Metamaterials</u></a> - Research Intern<br>
+							&#8674;<a href=https://www.burohappold.com/><u>Buro Happold</u></a> -  Mechanical/FP Engineer Co-op<br>
+							&#8674;<a href=https://www.instron.com/en-us/><u>Instron</u></a> - Sustaining Engineer Co-op<br>
+							<br><br>
+							Projects:<br> -->
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="full-viewport-height" id="thirdbg">
 
 			</div>
+
+
 		</div>
-
-			<!-- <div class="full-viewport-height" id="secondbg">
-				<h1 class="shadow">About Me</h1>
-				<section id="about">
-					<p></p>
-				</section>
-			</div> -->
-
 
 
 
 		<footer class="intro">
 			&#8674;
-			<a href="#">
+			<a href="https://www.linkedin.com/in/ryan-huang-69b011203/">
 				<svg id="linkedin-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3333 3333" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd">
 					<path d="M1667 0c920 0 1667 746 1667 1667 0 920-746 1667-1667 1667C747 3334 0 2588 0 1667 0 747 746 0 1667 0zm-215 1336h342v175h5c48-86 164-175 338-175 361 0 428 225 428 517v596h-357v-528c0-126-3-288-186-288-186 0-214 137-214 279v537h-357V1336zm-247-309c0 102-83 186-186 186-102 0-186-83-186-186 0-102 83-186 186-186 102 0 186 83 186 186zm-371 309h371v1113H834V1336z"></path>
 				</svg>
@@ -71,6 +102,7 @@
 			</div>
 
 		</footer>
+
 	</body>
 </html>
 

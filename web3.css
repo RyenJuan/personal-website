@@ -10,6 +10,7 @@ a, a:hover, a:focus, a:active {
 html {
 	font-family: "DM Sans","San Francisco", "Helvetica Neue", Helvetica, sans-serif;
 	color: #f1f0f0;
+	font-size: 1.2em;
 }
 
 
@@ -20,8 +21,8 @@ header {
 	margin: 0;
 	filter: drop-shadow(0 0 5px white);
 
-	font-size: 25px;
-	/* color: #585858; */
+	font-size: 1.5625em;
+	/* color: #f1f0f0; */
 
 	font-family: "Montserrat";
 	animation-duration: 4s;
@@ -29,8 +30,6 @@ header {
 
 	position: relative;
 	bottom: calc(-35vh + 50px);
-
-
 }
 
 
@@ -40,15 +39,13 @@ header {
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: -1;
+	z-index: 0;
 }
 
 
 
 @keyframes dropin {
-	0% {
-		opacity: 0.01;
-	}
+	0% { opacity: 0.01; }
 	25% { opacity: 0.01; }
 	50% { opacity: 0.5; }
 	100% { opacity: 1; }
@@ -90,6 +87,7 @@ body {
 	margin: 0 auto;
 	flex: 1 0 auto;
 	text-align: center;
+	z-index: 1;
 }
 
 .full-viewport-height {
@@ -106,15 +104,14 @@ p, h1 {
 }
 
 #firstbg {
-	/* background: radial-gradient(ellipse at bottom, #1b2735 0%, #292a38 100%); */
-	background: #3E5A7A;
-	background: radial-gradient(ellipse farthest-side at bottom center, #3E5A7A 0%, #292A38 100%);
+	background: black;
 }
-
 #secondbg {
-	background: #3E5A7A;
-	background: radial-gradient(ellipse farthest-side at top center, #3E5A7A 0%, #292A38 100%);
-
+	background: rgba(233,233,233,255);
+	color: black;
+}
+#thirdbg {
+	background: rgba(97,171,255,1);
 }
 
 
@@ -133,7 +130,7 @@ p, h1 {
 	line-height: 190%;
 	margin-left: 25%;
 	margin-right: 25%;
-	margin-top: 1%;
+
 }
 
 
@@ -150,8 +147,27 @@ p, h1 {
 }
 
 
-/* the typewriter animation */
+/* about me text */
 
+.container {
+	position: relative;
+	top: 15vh;
+	display: flex; /* Use Flexbox to align children side by side */
+	gap: 2vw; /* Space between the divs */
+	padding: 20px; /* Optional padding for the container */
+}
+.info {
+	flex: 1; /* Ensures that both divs take up equal space */
+	padding: 20px;
+	text-align: center;
+	background: rgba(233,233,233,0.65);
+	text-align: left;
+	line-height: 1.5;
+}
+
+
+
+/* the typewriter animation */
 
 #typewriter {
 	/* display: inline-block; */
@@ -216,6 +232,7 @@ p, h1 {
 
 
 /* the rainbow effect */
+/* nice to have but largely unused */
 .shadow {
 	font-size: 2vw;
 	text-shadow: 1px 1px 0px #eb452b,
@@ -237,11 +254,10 @@ footer {
 	/* font-weight: bold; */
 
 	flex-shrink: 0;
-
 	min-width: 350px;
 
-	/* background-image: linear-gradient(0deg, #d0d0d0 0%, #f1f0f0 100%); */
-
+	/* change the footer background to stay contrasted in all background colors */
+	mix-blend-mode: difference;
 }
 
 
@@ -251,9 +267,6 @@ footer {
 	 margin:0;
 	 top: 8px;
 	 width: 30px;
-
-	 /* fill: #585858; */
-	 /* fill: #f1f0f0; */
 	 fill: white;
 
 	 transition: 0.5s all ease;
