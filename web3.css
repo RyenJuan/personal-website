@@ -10,7 +10,7 @@ a, a:hover, a:focus, a:active {
 html {
 	font-family: "DM Sans","San Francisco", "Helvetica Neue", Helvetica, sans-serif;
 	color: #f1f0f0;
-	font-size: 1.2em;
+	font-size: 1.1em;
 }
 
 
@@ -107,11 +107,13 @@ p, h1 {
 	background: black;
 }
 #secondbg {
-	background: rgba(233,233,233,255);
+	/* background: rgba(233,233,233,255); */
+	background: linear-gradient(to bottom, rgba(233,233,233,1) 53%, rgba(33,33,33,1) 47%);
 	color: black;
 }
 #thirdbg {
-	background: rgba(97,171,255,1);
+	/* background: rgba(59,65,73,1); */
+	background: linear-gradient(to right, white 50%, rgba(233,233,233,1) 50%);
 }
 
 
@@ -120,17 +122,14 @@ p, h1 {
 #homepage {
 	position: relative;
 	bottom: calc(-30vh);
+	background: radial-gradient(circle at center, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.05) 15%);
 	margin-left: 10%;
 	margin-right: 10%;
 }
 
 /* about me section */
 #about {
-	position: relative;
 	line-height: 190%;
-	margin-left: 25%;
-	margin-right: 25%;
-
 }
 
 
@@ -147,23 +146,104 @@ p, h1 {
 }
 
 
-/* about me text */
+/* about me, experience, and project text*/
 
 .container {
 	position: relative;
-	top: 15vh;
+	top: 1.5vh;
 	display: flex; /* Use Flexbox to align children side by side */
-	gap: 2vw; /* Space between the divs */
+	gap: 1vw; /* Space between the divs */
 	padding: 20px; /* Optional padding for the container */
 }
-.info {
+
+.about_info {
 	flex: 1; /* Ensures that both divs take up equal space */
-	padding: 20px;
-	text-align: center;
-	background: rgba(233,233,233,0.65);
+	padding: 10px;
+	background: radial-gradient(circle, rgba(233,233,233,1) 5%, rgba(233,233,233,0.95) 85%);
 	text-align: left;
 	line-height: 1.5;
 }
+.more_info_left {
+	flex: 1; /* Ensures that both divs take up equal space */
+	padding: 20px;
+	/* background: rgba(233,233,233,0.65); */
+	background: radial-gradient(circle, rgba(255,255,255,1) 5%, rgba(255,255,255,0.3) 80%);
+	text-align: left;
+	line-height: 1.5;
+	color: black;
+}
+.more_info_right {
+	flex: 1; /* Ensures that both divs take up equal space */
+	padding: 20px;
+	/* background: rgba(233,233,233,0.65); */
+	color: black;
+	text-align: left;
+	line-height: 1.5;
+}
+
+
+
+/* experiences section */
+
+/* container for description and image */
+.experience {
+    display: flex;              /* Use Flexbox layout */
+    align-items: center;        /* Vertically center items */
+    padding: 5px;              /* Add some padding around the container */
+	 margin-bottom: 10vh;
+}
+.experience a {
+	display: block;
+	width: 35%;
+}
+
+/* styling for description */
+.description {
+    margin-left: 2vw;         /* Space between description and image */
+	 transition: color 3s ease-in-out;
+}
+
+/* styling for image */
+.image {
+	 position: relative;
+    max-width: 100%;            /* Ensure the image scales down if needed */
+    height: auto;               /* Maintain aspect ratio of the image */
+}
+
+
+/* all of this below is just for the hoverable experience section */
+/* doesnt work in experience section but i would like to use it in the future (needs debugging)*/
+/* POSSIBLY ADD TO PROJECTS INSTEAD OF EXPERIENCE */
+
+/* usage */
+/* <!-- <div class="description_wrap">
+	<div class="description_new">Collaborated with Sustaining Engineering; Designed test fixtures</div>
+	<div class="description_old"><strong>Mechanical Engineer Co-op</strong><br><i>July 2023 - Dec 2023</i></div>
+</div> --> */
+
+.description_wrap {
+	align-items: center;        /* Vertically center items */
+}
+.description_old, .description_new {
+   transition: opacity 0.4s linear;
+   height: 0px;
+}
+.description_old {
+	/* margin: 0 auto; */
+}
+.description_new {
+   opacity: 0;
+   z-index: 1;
+}
+.description_wrap:hover .description_old{
+	opacity: 0;
+}
+.description_wrap:hover .description_new{
+	opacity: 1;
+	filter: drop-shadow(0 0 3px white);
+	color: black;
+}
+
 
 
 
@@ -321,4 +401,39 @@ footer {
 	height: 70em;
 	height: 100vh;
 
+}
+
+/* decorative underline css */
+.short-underline {
+    position: relative; /* Required for positioning pseudo-element */
+    display: inline-block; /* Required to ensure the width of the element adjusts to the content */
+    font-size: 2.5em; /* Adjust the font size as needed */
+	 z-index: 2;
+}
+
+.short-underline::before {
+    content: ''; /* No text content, just a line */
+    position: absolute; /* Position relative to the parent element */
+    bottom: -0.5vh; /* Align to the bottom of the parent element */
+    width: 2ch; /* Width of the underline (2 characters wide) */
+    height: 4px; /* Height of the underline */
+    background-color: black; /* Color of the underline */
+	 z-index: 2;
+}
+
+#white-underline {
+    position: relative; /* Required for positioning pseudo-element */
+    display: inline-block; /* Required to ensure the width of the element adjusts to the content */
+    font-size: 2.5em; /* Adjust the font size as needed */
+	 z-index: 2;
+}
+
+#white-underline::before {
+    content: ''; /* No text content, just a line */
+    position: absolute; /* Position relative to the parent element */
+    bottom: -0.5vh; /* Align to the bottom of the parent element */
+    width: 2ch; /* Width of the underline (2 characters wide) */
+    height: 4px; /* Height of the underline */
+    background-color: white; /* Color of the underline */
+	 z-index: 2;
 }

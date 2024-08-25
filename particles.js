@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	let canvasH = canvas.height + padding;
 
 	// number of particles to draw
-	let n = canvasW / 17;
+	let n = canvasW / 19;
 	// let n = canvasW / canvasW;
 
 	//minimum distance to draw an edge between particles
@@ -69,15 +69,25 @@ document.addEventListener('DOMContentLoaded', function() {
 			// this.color = Math.floor(Math.random()*16777215).toString(16); // cannot get the color to swap when switching boundaries
 			this.colorw = "FFFFFF";
 			this.colorb = "000000";
+			this.colorg = "787878";
 		}
 
 		updateColor() {
 		 	// change color if particle moves past the depth threshold
-			if (this.y > depthThreshold) {
-				  this.color = this.colorb; // switch to black
+			if (this.y > depthThreshold && this.y < (depthThreshold+0.53*window.innerHeight)) {
+				this.color = this.colorb; // second background -> about me
 			}
-			else if (this.y < depthThreshold){
-				  this.color = this.colorw; // switch to white
+			else if (this.y > (depthThreshold+0.53*window.innerHeight) && this.y < depthThreshold+window.innerHeight) {
+				this.color = this.colorw; // second background -> skills
+			}
+			else if (this.y < depthThreshold) {
+				this.color = this.colorw; // first background
+			}
+			else if (this.y > (depthThreshold+window.innerHeight) && this.x > window.innerWidth/2) {
+				this.color = this.colorg; // third background -> projects
+			}
+			else if (this.y > (depthThreshold+window.innerHeight) && this.x < window.innerWidth/2) {
+				this.color = this.colorb; // third background -> experience
 			}
 		}
 
@@ -92,7 +102,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 
 		moveParticle() {
-			const scrollTop = window.scrollY || window.pageYOffset;   // Get the current scroll position
 
 			if (this.x < -padding) {
 				this.x = canvasW;
@@ -107,20 +116,17 @@ document.addEventListener('DOMContentLoaded', function() {
 				this.y = -padding;
 			}
 
-			this.x += this.vx * (1.2 - (scrollPercent/100));
-			this.y += this.vy * (1.2 - (scrollPercent/100));
-			this.updateColor();
-
-			// if (scrollPercent > 75) {
-			// 	this.x += this.vx * (1.2 - (scrollPercent/100));
-			// 	this.y += this.vy * (1.2 - (scrollPercent/100));
-			// 	this.updateColor();
-			// }
-			// else {
-			// 	this.x += this.vx;
-			// 	this.y += this.vy;
-			// 	this.updateColor();
-			// }
+			// modify particle speed depending on how far down the screen you are
+			if (scrollPercent > 40) {
+				this.x += this.vx * (1.1 - (scrollPercent/100));
+				this.y += this.vy * (1.1 - (scrollPercent/100));
+				this.updateColor();
+			}
+			else {
+				this.x += this.vx;
+				this.y += this.vy;
+				this.updateColor();
+			}
 		}
 
 		connectEdges(index, particles) {
@@ -159,6 +165,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		  // console.log(`Scroll Depth: ${scrollDepth.toFixed(2)}%`);
 
 		  depthThreshold = viewportHeight - scrollTop;
+		  // console.log(scrollTop);
 		  scrollPercent = scrollDepth;
 	}
 
