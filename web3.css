@@ -10,7 +10,8 @@ a, a:hover, a:focus, a:active {
 html {
 	font-family: "DM Sans","San Francisco", "Helvetica Neue", Helvetica, sans-serif;
 	color: #f1f0f0;
-	font-size: 1.1em;
+	/* font-size: 1.1em; */
+	font-size: 1.25vw;
 }
 
 
@@ -51,6 +52,7 @@ header {
 	100% { opacity: 1; }
 }
 
+/* ------------------------------------------------------------------------------------------ */
 
 /* animation for the stylish line below the title */
 #blueline {
@@ -76,7 +78,8 @@ header {
 }
 
 
-/* the flexbox footer */
+/* ------------------------------------------------------------------------------------------ */
+/* generalized cross */
 body {
 	/* display: flex; */
 	min-height: 100vh;
@@ -97,6 +100,7 @@ body {
 
 }
 
+/* ------------------------------------------------------------------------------------------ */
 
 /* formatting related css */
 p, h1 {
@@ -108,8 +112,28 @@ p, h1 {
 }
 #secondbg {
 	/* background: rgba(233,233,233,255); */
-	background: linear-gradient(to bottom, rgba(233,233,233,1) 53%, rgba(33,33,33,1) 47%);
+	/* background: linear-gradient(to bottom, rgba(233,233,233,1) 53%, rgba(33,33,33,1) 47%); */
+	background: rgba(233,233,233,1);
 	color: black;
+	max-height: 53vh;
+}
+#secondbg_skills{
+	/* background: rgba(33,33,33,1); */
+	background: repeating-linear-gradient(to right,
+		rgba(55, 55, 55, 1),  /* Medium Gray starts at 40% */
+		rgba(55, 55, 55, 1) 20%,  /* Medium Gray until 60% */
+		rgba(45, 45, 45, 1) 20%,  /* Slightly Lighter Gray starts at 20% */
+		rgba(45, 45, 45, 1) 40%,  /* Slightly Lighter Gray until 40% */
+		rgba(55, 55, 55, 1) 40%,  /* Dark Gray */
+		rgba(55, 55, 55, 1) 60%,  /* Dark Gray until 20% */
+		rgba(45, 45, 45, 1) 60%,  /* Slightly Lighter Gray starts at 20% */
+		rgba(45, 45, 45, 1) 80%,  /* Slightly Lighter Gray until 40% */
+		rgba(55, 55, 55, 1) 80%,  /* Medium Gray starts at 40% */
+		rgba(55, 55, 55, 1) 100%  /* Medium Gray until 60% */
+
+
+	 );
+	max-height: 47vh;
 }
 #thirdbg {
 	/* background: rgba(59,65,73,1); */
@@ -132,8 +156,9 @@ p, h1 {
 	line-height: 190%;
 }
 
+/* ------------------------------------------------------------------------------------------ */
 
-/* animation for the intro paragraphs */
+/* animation for the intro*/
 .intro {
 	animation-name: fadein1;
 	animation-duration: 3.5s;
@@ -145,6 +170,43 @@ p, h1 {
 	100% { opacity: 1; }
 }
 
+/* ------------------------------------------------------------------------------------------ */
+
+/* skills section */
+
+.skill_list {
+    display: flex;
+    justify-content: space-between; /* Distributes space evenly between the items */
+	 top: 3vh;
+	 position: relative;
+    /* width: 80%; /* Adjust this width to control spacing */ */
+}
+
+.skill1, .skill2, .skill3, .skill4, .skill5 {
+    flex: 1; /* Allows items to grow evenly */
+    text-align: center; /* Centers text within each item */
+	 position: relative;
+	 top: 3vh;
+
+	 align-items: center;
+    color: white;
+    margin: 0 5px; /* Optional: Add some margin between items */
+    border-radius: 5px;
+	 font-size: 1.5em;
+}
+
+.icon-container {
+	place-items: center;
+	display: grid;
+	justify-content: center;
+	grid-template-columns: repeat(2, 60px); /* Adjust size as needed */
+	grid-template-rows: repeat(2, 60px);    /* Adjust size as needed */
+	margin-top: 2vh;
+}
+
+
+
+/* ------------------------------------------------------------------------------------------ */
 
 /* about me, experience, and project text*/
 
@@ -154,12 +216,13 @@ p, h1 {
 	display: flex; /* Use Flexbox to align children side by side */
 	gap: 1vw; /* Space between the divs */
 	padding: 20px; /* Optional padding for the container */
+
 }
 
 .about_info {
 	flex: 1; /* Ensures that both divs take up equal space */
 	padding: 10px;
-	background: radial-gradient(circle, rgba(233,233,233,1) 5%, rgba(233,233,233,0.95) 85%);
+	background: radial-gradient(circle, rgba(233,233,233,1) 5%, rgba(233,233,233,0.75) 85%);
 	text-align: left;
 	line-height: 1.5;
 }
@@ -182,6 +245,7 @@ p, h1 {
 }
 
 
+/* ------------------------------------------------------------------------------------------ */
 
 /* experiences section */
 
@@ -246,6 +310,7 @@ p, h1 {
 
 
 
+/* ------------------------------------------------------------------------------------------ */
 
 /* the typewriter animation */
 
@@ -310,17 +375,26 @@ p, h1 {
 	25%, 75%, 100% {opacity: 1;}
 }
 
+/* ------------------------------------------------------------------------------------------ */
 
-/* the rainbow effect */
+/* the rainbow/shadow effect */
 /* nice to have but largely unused */
 .shadow {
 	font-size: 2vw;
-	text-shadow: 1px 1px 0px #eb452b,
+	/* this is the rainbow */
+	/* text-shadow: 1px 1px 0px #eb452b,
 					 2px 2px 0px #efa032,
 					 3px 3px 0px #46b59b,
 					 4px 4px 0px #017e7f,
-					 5px 5px 0px #052939;
+					 5px 5px 0px #052939; */
+	text-shadow: 1px 1px 0px #000000,
+					 2px 2px 0px #000000,
+					 3px 3px 0px #000000,
+					 4px 4px 0px #000000,
+					 5px 5px 0px #000000;
 }
+
+/* ------------------------------------------------------------------------------------------ */
 
 /* honestly dont understand the footer css here */
 footer {
@@ -359,6 +433,7 @@ footer {
 	fill: #2596be !important;
 }
 
+/* ------------------------------------------------------------------------------------------ */
 
 /* all of this below is just for the "contact" */
 .wrap {
@@ -395,6 +470,7 @@ footer {
 	color: white;
 }
 
+/* ------------------------------------------------------------------------------------------ */
 
 /* makes the background always the size of the viewport */
 .full-viewport-height {
@@ -402,6 +478,7 @@ footer {
 	height: 100vh;
 
 }
+/* ------------------------------------------------------------------------------------------ */
 
 /* decorative underline css */
 .short-underline {
@@ -436,4 +513,21 @@ footer {
     height: 4px; /* Height of the underline */
     background-color: white; /* Color of the underline */
 	 z-index: 2;
+}
+/* ------------------------------------------------------------------------------------------ */
+/* marquee sliding effect */
+
+.marquee-container{
+ 	overflow: hidden;
+}
+.marquee{
+	min-width:100%;
+	animation: marquee 5s linear infinite;
+}
+.marquee:hover{
+ 	animation-play-state: paused;
+}
+@keyframes marquee {
+	from{margin-left : 100%;}
+	to{margin-left: -100%;}
 }

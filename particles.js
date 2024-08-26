@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			// show the particle on the canvas
 			ctx.beginPath();
 			ctx.fillStyle = "#" + this.color;
-			ctx.arc(this.x, this.y, 3, 0, Math.PI * 2, true);
+			ctx.arc(this.x, this.y, 1.5, 0, Math.PI * 2, true);
 			ctx.globalAlpha = 1;
 			ctx.closePath();
 			ctx.fill();
