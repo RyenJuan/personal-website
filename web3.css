@@ -23,7 +23,6 @@ header {
 	filter: drop-shadow(0 0 5px white);
 
 	font-size: 1.5625em;
-	/* color: #f1f0f0; */
 
 	font-family: "Montserrat";
 	animation-duration: 4s;
@@ -120,18 +119,16 @@ p, h1 {
 #secondbg_skills{
 	/* background: rgba(33,33,33,1); */
 	background: repeating-linear-gradient(to right,
-		rgba(55, 55, 55, 1),  /* Medium Gray starts at 40% */
-		rgba(55, 55, 55, 1) 20%,  /* Medium Gray until 60% */
-		rgba(45, 45, 45, 1) 20%,  /* Slightly Lighter Gray starts at 20% */
-		rgba(45, 45, 45, 1) 40%,  /* Slightly Lighter Gray until 40% */
-		rgba(55, 55, 55, 1) 40%,  /* Dark Gray */
-		rgba(55, 55, 55, 1) 60%,  /* Dark Gray until 20% */
-		rgba(45, 45, 45, 1) 60%,  /* Slightly Lighter Gray starts at 20% */
-		rgba(45, 45, 45, 1) 80%,  /* Slightly Lighter Gray until 40% */
-		rgba(55, 55, 55, 1) 80%,  /* Medium Gray starts at 40% */
-		rgba(55, 55, 55, 1) 100%  /* Medium Gray until 60% */
-
-
+		rgba(55, 55, 55, 1),
+		rgba(55, 55, 55, 1) 20%,
+		rgba(45, 45, 45, 1) 20%,
+		rgba(45, 45, 45, 1) 40%,
+		rgba(55, 55, 55, 1) 40%,
+		rgba(55, 55, 55, 1) 60%,
+		rgba(45, 45, 45, 1) 60%,
+		rgba(45, 45, 45, 1) 80%,
+		rgba(55, 55, 55, 1) 80%,
+		rgba(55, 55, 55, 1) 100%
 	 );
 	max-height: 47vh;
 }
@@ -139,8 +136,6 @@ p, h1 {
 	/* background: rgba(59,65,73,1); */
 	background: linear-gradient(to right, white 50%, rgba(233,233,233,1) 50%);
 }
-
-
 
 /* homepage section */
 #homepage {
@@ -190,20 +185,87 @@ p, h1 {
 
 	 align-items: center;
     color: white;
-    margin: 0 5px; /* Optional: Add some margin between items */
+    /* margin: 0 5px; /* Optional: Add some margin between items */ */
     border-radius: 5px;
-	 font-size: 1.5em;
+	 font-size: 1.65em;
+	 max-width: 20vw;
 }
 
 .icon-container {
 	place-items: center;
 	display: grid;
 	justify-content: center;
-	grid-template-columns: repeat(2, 60px); /* Adjust size as needed */
-	grid-template-rows: repeat(2, 60px);    /* Adjust size as needed */
+	grid-template-columns: repeat(2, 65px); /* Adjust size as needed */
+	grid-template-rows: repeat(2, 65px);    /* Adjust size as needed */
 	margin-top: 2vh;
+	gap: 0.5vw;
 }
 
+
+/* ------------------------------------------------------------------------------------------ */
+
+/* the skills typewriter animation */
+
+#skill_typewriter {
+	position: relative;
+	margin-top: 4vh;
+	/* margin-left: 2vw; */
+	/* text-align: left; */
+	font-family: "Source Code Pro", monospace;
+	font-size: 0.8em;
+	/
+	/* bottom: calc(-35vh + 50px); */
+}
+
+.skill_text_1 { animation: skill_text1; }
+.skill_text_2 { animation: skill_text2; }
+.skill_text_3 { animation: skill_text3; }
+.skill_text_4 { animation: skill_text4; }
+.skill_text_5 { animation: skill_text5; }
+
+.skill_text_1, .skill_text_2, .skill_text_3, .skill_text_4, .skill_text_5 {
+	overflow: hidden;
+	white-space: nowrap;
+	display: inline-flex;
+
+	animation-duration: 13s;
+	animation-timing-function: steps(10, end);
+	animation-iteration-count: infinite;
+}
+
+.skill_text_1::after, .skill_text_2::after, .skill_text_3::after, .skill_text_4::after, .skill_text_5::after{
+	content: " _";
+
+	animation: caret infinite;
+	animation-duration: 1.5s;
+	animation-timing-function: steps(1);
+}
+
+/* width has to be set high since safari doesnt support the font size */
+@keyframes skill_text1 {
+	0%, 20%, 40%, 60%, 80%, 100% {width: 0;}
+	5%, 15% {width: 4.5em;}
+}
+@keyframes skill_text2 {
+	0%, 20%, 40%, 60%, 80%, 100% {width: 0;}
+	25%, 35% {width: 2.3em;}
+}
+@keyframes skill_text3 {
+	0%, 20%, 40%, 60%, 80%, 100% {width: 0;}
+	45%, 55% {width: 4.5em;}
+}
+@keyframes skill_text4 {
+	0%, 20%, 40%, 60%, 80%, 100% {width: 0;}
+	65%, 75% {width: 2.5em;}
+}
+@keyframes skill_text5 {
+	0%, 20%, 40%, 60%, 80%, 100% {width: 0;}
+	85%, 95% {width: 7em;}
+}
+@keyframes caret {
+	0%, 50% {opacity: 0;}
+	25%, 75%, 100% {opacity: 1;}
+}
 
 
 /* ------------------------------------------------------------------------------------------ */
@@ -230,7 +292,7 @@ p, h1 {
 	flex: 1; /* Ensures that both divs take up equal space */
 	padding: 20px;
 	/* background: rgba(233,233,233,0.65); */
-	background: radial-gradient(circle, rgba(255,255,255,1) 5%, rgba(255,255,255,0.3) 80%);
+	background: radial-gradient(circle, rgba(255,255,255,1) 55%, rgba(255,255,255,0.7) 80%);
 	text-align: left;
 	line-height: 1.5;
 	color: black;
@@ -316,9 +378,10 @@ p, h1 {
 
 #typewriter {
 	/* display: inline-block; */
-
 	position: relative;
 	font-weight: normal;
+	font-family: "Source Code Pro", monospace;
+	font-size: 1.7em;
 	bottom: calc(-35vh + 50px);
 }
 
@@ -352,15 +415,15 @@ p, h1 {
 /* width has to be set high since safari doesnt support the font size */
 @keyframes text1 {
 	0%, 20%, 40%, 60%, 80%, 100% {width: 0;}
-	5%, 15% {width: 7em;}
+	5%, 15% {width: 10em;}
 }
 @keyframes text2 {
 	0%, 20%, 40%, 60%, 80%, 100% {width: 0;}
-	25%, 35% {width: 10em;}
+	25%, 35% {width: 14em;}
 }
 @keyframes text3 {
 	0%, 20%, 40%, 60%, 80%, 100% {width: 0;}
-	45%, 55% {width: 8em;}
+	45%, 55% {width: 8.6em;}
 }
 @keyframes text4 {
 	0%, 20%, 40%, 60%, 80%, 100% {width: 0;}
@@ -368,7 +431,7 @@ p, h1 {
 }
 @keyframes text5 {
 	0%, 20%, 40%, 60%, 80%, 100% {width: 0;}
-	85%, 95% {width: 10.5em;}
+	85%, 95% {width: 13em;}
 }
 @keyframes caret {
 	0%, 50% {opacity: 0;}
