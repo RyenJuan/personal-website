@@ -197,7 +197,16 @@ p, h1 {
 	justify-content: center;
 	grid-template-columns: repeat(2, 65px); /* Adjust size as needed */
 	grid-template-rows: repeat(2, 65px);    /* Adjust size as needed */
-	margin-top: 2vh;
+	margin-top: 4vh;
+	gap: 0.5vw;
+}
+
+.software-icon-container {
+	place-items: center;
+	display: grid;
+	justify-content: center;
+	grid-template-columns: repeat(2, 65px); /* Adjust size as needed */
+	margin-top: 4vh;
 	gap: 0.5vw;
 }
 
