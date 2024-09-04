@@ -57,19 +57,23 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 
+	let invx = 1;
+	let invy = 1;
 	class Particle {
+
 		// create a particle object with a random location and random velocity
-		constructor(x, y, vx, vy, color) {
-			this.x = Math.random() * canvasW;
-			this.y = Math.random() * canvasH;
-			this.vx = Math.random() * 4 - 2;
-			this.vy = Math.random() * 4 - 2;
-			this.vxs = Math.random();
-			this.vys = Math.random();
-			// this.color = Math.floor(Math.random()*16777215).toString(16); // cannot get the color to swap when switching boundaries
-			this.colorw = "FFFFFF";
-			this.colorb = "000000";
-			this.colorg = "787878";
+		constructor(options) {
+				this.x = options.x || Math.random() * canvasW;
+				this.y = options.y || Math.random() * canvasH;
+				this.mouse = options.mouse || false; // should be redundant
+				this.vx = Math.random() * 4 - 2;
+				this.vy = Math.random() * 4 - 2;
+				this.vxs = Math.random();
+				this.vys = Math.random();
+				// this.color = Math.floor(Math.random()*16777215).toString(16); // cannot get the color to swap when switching boundaries
+				this.colorw = "FFFFFF";
+				this.colorb = "000000";
+				this.colorg = "787878";
 		}
 
 		updateColor() {
@@ -97,13 +101,32 @@ document.addEventListener('DOMContentLoaded', function() {
 			// show the particle on the canvas
 			ctx.beginPath();
 			ctx.fillStyle = "#" + this.color;
-			ctx.arc(this.x, this.y, 1.5, 0, Math.PI * 2, true);
+			if (this.mouse) {
+				ctx.arc(this.x, this.y, 4.5, 0, Math.PI * 2, true);
+			}
+			else {
+				ctx.arc(this.x, this.y, 1.5, 0, Math.PI * 2, true);
+			}
 			ctx.globalAlpha = 1;
 			ctx.closePath();
 			ctx.fill();
 		}
 
 		moveParticle() {
+			if (this.mouse) {
+				// modify particle speed depending on how far down the screen you are
+				if (scrollPercent > 40) {
+					this.x += (this.vx * 0.2) * (1.1 - (scrollPercent/100));
+					this.y += (this.vy * 0.2) * (1.1 - (scrollPercent/100));
+					this.updateColor();
+				}
+				else {
+					this.x +=  0.25 * invx;
+					this.y += 0.25 * invy;
+					this.updateColor();
+				}
+				return;
+			}
 
 			if (this.x < -padding) {
 				this.x = canvasW;
@@ -151,11 +174,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	// array to store each particle object
 	const particles = [];
+	const mouseParticle = new Particle({x: 0, y: 0, mouse: true})
 
 	// create all initial particle objects and push them to the array
 	for(let i = 0; i < n; i++) {
-		particles.push(new Particle());
+		particles.push(new Particle({x: false, y: false}));
 	}
+	particles.push(mouseParticle)
 
 	// Function to update the depth threshold based on scroll position
 	function updateDepthThreshold() {
@@ -171,8 +196,26 @@ document.addEventListener('DOMContentLoaded', function() {
 		  scrollPercent = scrollDepth;
 	}
 
+	function getMousePos(canvas, evt) {
+	  var rect = canvas.getBoundingClientRect();
+	  return {
+		 x: evt.clientX - rect.left,
+		 y: evt.clientY - rect.top
+	  };
+	}
+
 	// Update depth threshold on scroll
 	window.addEventListener('scroll', updateDepthThreshold);
+	window.addEventListener('mousemove', handleMouseParticle);
+
+	function handleMouseParticle(e) {
+		invx = Math.random() < .5 ? 1 : -1;
+		invy = Math.random() < .5 ? 1 : -1;
+
+		const z = getMousePos(canvas, e);
+		mouseParticle.x = z.x;
+		mouseParticle.y = z.y;
+	}
 
 
 	// update the positions of all particles every 40 ms
