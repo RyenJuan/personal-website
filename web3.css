@@ -10,7 +10,6 @@ a, a:hover, a:focus, a:active {
 html {
 	font-family: "DM Sans","San Francisco", "Helvetica Neue", Helvetica, sans-serif;
 	color: #f1f0f0;
-	/* font-size: 1.1em; */
 	font-size: 1.25vw;
 }
 
@@ -292,10 +291,12 @@ p, h1 {
 
 .about_info {
 	flex: 1; /* Ensures that both divs take up equal space */
-	padding: 10px;
+	/* padding: 10px; */
+	margin: 0.1em;
 	background: radial-gradient(circle, rgba(233,233,233,1) 5%, rgba(233,233,233,0.75) 85%);
 	text-align: left;
 	line-height: 1.5;
+
 }
 .more_info_left {
 	flex: 1; /* Ensures that both divs take up equal space */
@@ -309,7 +310,8 @@ p, h1 {
 .more_info_right {
 	flex: 1; /* Ensures that both divs take up equal space */
 	padding: 20px;
-	/* background: rgba(233,233,233,0.65); */
+	max-height: 70vh;
+	background: radial-gradient(circle, rgba(233,233,233,1) 55%, rgba(233,233,233,0.7) 80%);
 	color: black;
 	text-align: left;
 	line-height: 1.5;
@@ -334,7 +336,8 @@ p, h1 {
 
 /* styling for description */
 .description {
-    margin-left: 2vw;         /* Space between description and image */
+    margin-left: 4vw;         /* Space between description and image */
+	 margin-right: 4vw;
 	 transition: color 3s ease-in-out;
 }
 
@@ -346,37 +349,55 @@ p, h1 {
 }
 
 
-/* all of this below is just for the hoverable experience section */
-/* doesnt work in experience section but i would like to use it in the future (needs debugging)*/
-/* POSSIBLY ADD TO PROJECTS INSTEAD OF EXPERIENCE */
 
-/* usage */
-/* <!-- <div class="description_wrap">
-	<div class="description_new">Collaborated with Sustaining Engineering; Designed test fixtures</div>
-	<div class="description_old"><strong>Mechanical Engineer Co-op</strong><br><i>July 2023 - Dec 2023</i></div>
-</div> --> */
+/* ------------------------------------------------------------------------------------------ */
+/* projects section */
 
-.description_wrap {
-	align-items: center;        /* Vertically center items */
+.project {
+    display: flex;              /* Use Flexbox layout */
+    align-items: center;        /* Vertically center items */
+    padding: 5px;              /* Add some padding around the container */
+	 margin-bottom: 5vh;
 }
-.description_old, .description_new {
+
+/* ------------------------------------------------------------------------------------------ */
+
+/* project/experience hover */
+.exp-container {
+	margin: 0 auto;
+	max-width: 370px;
+	margin-left: 4vw;
+	margin-right: 4vw;
+}
+
+.exp-old, .exp-new {
    transition: opacity 0.4s linear;
-   height: 0px;
+	display: flex;
+	align-items: center;
+   height: 20px;
 }
-.description_old {
-	/* margin: 0 auto; */
+.exp-old {
+   position: relative;
+   top: -10px;
+	text-align: left;
+	margin: 0 auto;
+	font-size: 1.1em;
+
 }
-.description_new {
+.exp-new {
+   position: relative;
+   top: 10px;
    opacity: 0;
    z-index: 1;
+	font-size: 0.75em;
+
 }
-.description_wrap:hover .description_old{
+.exp-container:hover .exp-old{
 	opacity: 0;
 }
-.description_wrap:hover .description_new{
+.exp-container:hover .exp-new{
 	opacity: 1;
 	filter: drop-shadow(0 0 3px white);
-	color: black;
 }
 
 
@@ -501,7 +522,6 @@ footer {
 	 /* transition: width 0.3s; */
 }
 #linkedin-circle:hover {
-	/* width: 27px; */
 	fill: #2596be !important;
 }
 

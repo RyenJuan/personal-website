@@ -78,22 +78,45 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		updateColor() {
 		 	// change color if particle moves past the depth threshold
-			if (this.y > depthThreshold && this.y < (depthThreshold+0.53*window.innerHeight)) {
-				// this.color = this.colorb; // second background -> about me
-				this.color = "00000050"; // Using #RRGGBBAA
-			}
-			else if (this.y > (depthThreshold+0.53*window.innerHeight) && this.y < depthThreshold+window.innerHeight) {
-				// this.color = this.colorw; // second background -> skills
-				this.color = "FFFFFF20"; // Using #RRGGBBAA
-			}
-			else if (this.y < depthThreshold) {
-				this.color = this.colorw; // first background
-			}
-			else if (this.y > (depthThreshold+window.innerHeight) && this.x > window.innerWidth/2) {
-				this.color = this.colorg; // third background -> projects
-			}
-			else if (this.y > (depthThreshold+window.innerHeight) && this.x < window.innerWidth/2) {
-				this.color = this.colorb; // third background -> experience
+			if (this.mouse) { // mouse specific color changes -> these colors are inverted from the normal particles for contrast
+
+				if (this.y > depthThreshold && this.y < (depthThreshold+0.53*window.innerHeight)) {
+					// this.color = this.colorb; // second background -> about me
+					this.color = this.colorb;
+				}
+				else if (this.y > (depthThreshold+0.53*window.innerHeight) && this.y < depthThreshold+window.innerHeight) {
+					// this.color = this.colorw; // second background -> skills
+					this.color = this.colorw;
+				}
+				else if (this.y < depthThreshold) {
+					this.color = this.colorw; // first background
+				}
+				else if (this.y > (depthThreshold+window.innerHeight) && this.x > window.innerWidth/2) {
+					this.color = this.colorb; // third background -> projects
+				}
+				else if (this.y > (depthThreshold+window.innerHeight) && this.x < window.innerWidth/2) {
+					this.color = this.colorb; // third background -> experience
+				}
+
+			} else {
+
+				if (this.y > depthThreshold && this.y < (depthThreshold+0.53*window.innerHeight)) {
+					// this.color = this.colorb; // second background -> about me
+					this.color = "00000050"; // Using #RRGGBBAA
+				}
+				else if (this.y > (depthThreshold+0.53*window.innerHeight) && this.y < depthThreshold+window.innerHeight) {
+					// this.color = this.colorw; // second background -> skills
+					this.color = "FFFFFF20"; // Using #RRGGBBAA
+				}
+				else if (this.y < depthThreshold) {
+					this.color = this.colorw; // first background
+				}
+				else if (this.y > (depthThreshold+window.innerHeight) && this.x > window.innerWidth/2) {
+					this.color = this.colorg; // third background -> projects
+				}
+				else if (this.y > (depthThreshold+window.innerHeight) && this.x < window.innerWidth/2) {
+					this.color = this.colorb; // third background -> experience
+				}
 			}
 		}
 
