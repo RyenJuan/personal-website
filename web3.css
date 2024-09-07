@@ -346,6 +346,7 @@ p, h1 {
 	margin-left: 2vw;         /* Space between description and image */
 	margin-right: 2vw;
 	transition: color 3s ease-in-out;
+	align-items: center;
 }
 
 /* styling for image */
@@ -433,13 +434,14 @@ p, h1 {
 }
 .exp-old {
    position: relative;
-   top: -10px;
+   top: 0px;
 	text-align: left;
 	margin: 0 auto;
 
 }
 .exp-new {
-   top: -10px;
+	position: relative;
+   top: 35px;
    opacity: 0;
    z-index: 1;
 	font-size: 0.75em;
