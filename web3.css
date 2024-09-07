@@ -286,7 +286,6 @@ p, h1 {
 	display: flex; /* Use Flexbox to align children side by side */
 	gap: 1vw; /* Space between the divs */
 	padding: 20px; /* Optional padding for the container */
-
 }
 
 .about_info {
@@ -331,20 +330,22 @@ p, h1 {
 /* container for description and image */
 .experience {
     display: flex;              /* Use Flexbox layout */
+
     align-items: center;        /* Vertically center items */
     padding: 5px;              /* Add some padding around the container */
 	 margin-bottom: 10vh;
 }
 .experience a {
 	display: block;
-	width: 35%;
+	width: 50%;
 }
 
 /* styling for description */
 .description {
-    margin-left: 4vw;         /* Space between description and image */
-	 margin-right: 4vw;
-	 transition: color 3s ease-in-out;
+	display: flex;
+	margin-left: 2vw;         /* Space between description and image */
+	margin-right: 2vw;
+	transition: color 3s ease-in-out;
 }
 
 /* styling for image */
@@ -352,6 +353,7 @@ p, h1 {
 	 position: relative;
     max-width: 100%;            /* Ensure the image scales down if needed */
     height: auto;               /* Maintain aspect ratio of the image */
+	 flex: 1 1 0px;
 }
 
 
@@ -366,22 +368,29 @@ p, h1 {
 	 margin-bottom: 5vh;
 }
 
+.project img {
+	position: relative;
+	max-width: 100%;            /* Ensure the image scales down if needed */
+	height: auto;
+}
+
 
 /* ------------------------------------------------------------------------------------------ */
 
-/* project/experience hover */
-.exp-container {
+/* project hover */
+.proj-container {
 	margin-left: 3vw;
 	margin-right: 3vw;
 }
 
-.exp-old, .exp-new {
+.proj-old, .proj-new {
    transition: opacity 0.4s linear;
 	display: flex;
 	align-items: center;
    height: 20px;
+	max-width: 350px;
 }
-.exp-old {
+.proj-old {
    position: relative;
    top: -10px;
 	text-align: left;
@@ -389,13 +398,52 @@ p, h1 {
 	font-size: 1.1em;
 
 }
-.exp-new {
+.proj-new {
    position: relative;
    top: 10px;
    opacity: 0;
    z-index: 1;
 	font-size: 0.75em;
+	width: 110%;
 
+}
+.proj-container:hover .proj-old{
+	opacity: 0;
+}
+.proj-container:hover .proj-new{
+	opacity: 1;
+	filter: drop-shadow(0 0 3px white);
+}
+
+
+/* ------------------------------------------------------------------------------------------ */
+
+/* experience hover */
+
+.exp-container {
+	margin-left: 3vw;
+}
+
+.exp-old, .exp-new {
+   transition: opacity 0.4s linear;
+	display: flex;
+	align-items: center;
+   height: 20px;
+	max-width: 375px;
+}
+.exp-old {
+   position: relative;
+   top: -10px;
+	text-align: left;
+	margin: 0 auto;
+
+}
+.exp-new {
+   top: -10px;
+   opacity: 0;
+   z-index: 1;
+	font-size: 0.75em;
+	/* width: 80%; */
 }
 .exp-container:hover .exp-old{
 	opacity: 0;
@@ -485,6 +533,7 @@ p, h1 {
 					 3px 3px 0px #46b59b,
 					 4px 4px 0px #017e7f,
 					 5px 5px 0px #052939; */
+	/* this is the black shadow */
 	text-shadow: 1px 1px 0px #000000,
 					 2px 2px 0px #000000,
 					 3px 3px 0px #000000,
@@ -610,21 +659,4 @@ footer {
     height: 4px; /* Height of the underline */
     background-color: white; /* Color of the underline */
 	 z-index: 2;
-}
-/* ------------------------------------------------------------------------------------------ */
-/* marquee sliding effect */
-
-.marquee-container{
- 	overflow: hidden;
-}
-.marquee{
-	min-width:100%;
-	animation: marquee 5s linear infinite;
-}
-.marquee:hover{
- 	animation-play-state: paused;
-}
-@keyframes marquee {
-	from{margin-left : 100%;}
-	to{margin-left: -100%;}
 }
