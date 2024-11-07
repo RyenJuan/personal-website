@@ -1,2 +1,2 @@
 # personal-website
-Just an aweseome personal website
+Just an awesome personal website
