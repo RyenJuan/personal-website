@@ -91,10 +91,10 @@ document.addEventListener('DOMContentLoaded', function() {
 				else if (this.y < depthThreshold) {
 					this.color = this.colorw; // first background
 				}
-				else if (this.y > (depthThreshold+window.innerHeight) && this.x > window.innerWidth/2) {
+				else if (this.y > (depthThreshold+window.innerHeight)) {
 					this.color = this.colorb; // third background -> projects
 				}
-				else if (this.y > (depthThreshold+window.innerHeight) && this.x < window.innerWidth/2) {
+				else if (this.y > (depthThreshold+window.innerHeight)) {
 					this.color = this.colorb; // third background -> experience
 				}
 
@@ -111,10 +111,10 @@ document.addEventListener('DOMContentLoaded', function() {
 				else if (this.y < depthThreshold) {
 					this.color = this.colorw; // first background
 				}
-				else if (this.y > (depthThreshold+window.innerHeight) && this.x > window.innerWidth/2) {
+				else if (this.y > (depthThreshold+window.innerHeight)) {
 					this.color = this.colorg; // third background -> projects
 				}
-				else if (this.y > (depthThreshold+window.innerHeight) && this.x < window.innerWidth/2) {
+				else if (this.y > (depthThreshold+window.innerHeight)) {
 					this.color = this.colorb; // third background -> experience
 				}
 			}
