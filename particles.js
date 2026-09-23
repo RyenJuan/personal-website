@@ -102,12 +102,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 				if (this.y > depthThreshold && this.y < (depthThreshold+0.53*window.innerHeight)) {
 					// this.color = this.colorb; // second background -> about me
-					this.color = "00000050"; // Using #RRGGBBAA
+					this.color = this.colorb; // Using #RRGGBBAA
 				}
-				else if (this.y > (depthThreshold+0.53*window.innerHeight) && this.y < depthThreshold+window.innerHeight) {
-					// this.color = this.colorw; // second background -> skills
-					this.color = "FFFFFF20"; // Using #RRGGBBAA
-				}
+				// else if (this.y > (depthThreshold+0.53*window.innerHeight) && this.y < depthThreshold+window.innerHeight) {
+				// 	// this.color = this.colorw; // second background -> skills
+				// 	this.color = this.colorw; // Using #RRGGBBAA
+				// }
 				else if (this.y < depthThreshold) {
 					this.color = this.colorw; // first background
 				}

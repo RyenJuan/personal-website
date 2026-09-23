@@ -21,7 +21,8 @@ header {
 	margin: 0;
 	filter: drop-shadow(0 0 5px white);
 
-	font-size: 1.5625em;
+	font-size: max(1.5625em, 15px);
+
 
 	font-family: "Montserrat";
 	animation-duration: 4s;
@@ -39,6 +40,7 @@ header {
 	top: 0;
 	left: 0;
 	z-index: 0;
+	transition: opacity 0.25s ease-out;
 }
 
 
@@ -115,25 +117,11 @@ p, h1 {
 	color: black;
 	max-height: 53vh;
 }
-#secondbg_skills{
-	/* background: rgba(33,33,33,1); */
-	background: repeating-linear-gradient(to right,
-		rgba(55, 55, 55, 1),
-		rgba(55, 55, 55, 1) 20%,
-		rgba(45, 45, 45, 1) 20%,
-		rgba(45, 45, 45, 1) 40%,
-		rgba(55, 55, 55, 1) 40%,
-		rgba(55, 55, 55, 1) 60%,
-		rgba(45, 45, 45, 1) 60%,
-		rgba(45, 45, 45, 1) 80%,
-		rgba(55, 55, 55, 1) 80%,
-		rgba(55, 55, 55, 1) 100%
-	 );
-	max-height: 47vh;
-}
+
 #thirdbg {
-	/* background: rgba(59,65,73,1); */
-	background: linear-gradient(to right, white 50%, rgba(233,233,233,1) 50%);
+	background: #ffffff;
+	color: black;
+	padding: 4vh 3vw 10vh;
 }
 
 /* homepage section */
@@ -143,6 +131,7 @@ p, h1 {
 	background: radial-gradient(circle at center, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.05) 15%);
 	margin-left: 10%;
 	margin-right: 10%;
+	font-size: max(1em, 12px)
 }
 
 /* about me section */
@@ -220,9 +209,8 @@ p, h1 {
 	/* margin-left: 2vw; */
 	/* text-align: left; */
 	font-family: "Source Code Pro", monospace;
-	font-size: 0.8em;
-	/
-	/* bottom: calc(-35vh + 50px); */
+	font-size: max(0.8em, 12px);
+
 }
 
 .skill_text_1 { animation: skill_text1; }
@@ -278,7 +266,7 @@ p, h1 {
 
 /* ------------------------------------------------------------------------------------------ */
 
-/* about me, experience, and project text*/
+/* about me text*/
 
 .container {
 	position: relative;
@@ -297,59 +285,10 @@ p, h1 {
 	line-height: 1.5;
 
 }
-.more_info_left {
-	flex: 1; /* Ensures that both divs take up equal space */
-	padding: 20px;
-	/* background: rgba(233,233,233,0.65); */
-	background: radial-gradient(circle, rgba(255,255,255,1) 55%, rgba(255,255,255,0.7) 80%);
-	text-align: left;
-	line-height: 1.5;
-	color: black;
-}
-.more_info_right {
-	flex: 1; /* Ensures that both divs take up equal space */
-	padding: 20px;
-	background: radial-gradient(circle, rgba(233,233,233,1) 55%, rgba(233,233,233,0.7) 80%);
-	color: black;
-	text-align: left;
-	line-height: 1.5;
-
-}
-
-/* ------------------------------------------------------------------------------------------ */
-.vertical-scroll {
-	/* border:1px solid black; */
-	max-height: 75vh;
-	overflow-y: scroll;
-}
 
 /* ------------------------------------------------------------------------------------------ */
 
-/* experiences section */
-
-/* container for description and image */
-.experience {
-    display: flex;              /* Use Flexbox layout */
-
-    align-items: center;        /* Vertically center items */
-    padding: 5px;              /* Add some padding around the container */
-	 margin-bottom: 10vh;
-}
-.experience a {
-	display: block;
-	width: 50%;
-}
-
-/* styling for description */
-.description {
-	display: flex;
-	margin-left: 2vw;         /* Space between description and image */
-	margin-right: 2vw;
-	transition: color 3s ease-in-out;
-	align-items: center;
-}
-
-/* styling for image */
+/* generic image sizing, used across skills/software logos */
 .image {
 	 position: relative;
     max-width: 100%;            /* Ensure the image scales down if needed */
@@ -358,103 +297,230 @@ p, h1 {
 }
 
 
-
 /* ------------------------------------------------------------------------------------------ */
-/* projects section */
 
-.project {
-    display: flex;              /* Use Flexbox layout */
-    align-items: center;        /* Vertically center items */
-    padding: 5px;              /* Add some padding around the container */
-	 margin-bottom: 5vh;
+/* Journey timeline: Experiences scrolling into Projects */
+
+.timeline {
+	position: relative;
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 2vh 0 0;
 }
 
-.project img {
+/* the vertical spine running down the center */
+.timeline::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 3px;
+	background-image: linear-gradient(180deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+}
+
+.timeline-item {
 	position: relative;
-	max-width: 100%;            /* Ensure the image scales down if needed */
+	width: 46%;
+	margin-bottom: 6vh;
+	box-sizing: border-box;
+}
+
+.timeline-left {
+	left: 0;
+	text-align: right;
+}
+
+.timeline-right {
+	left: 54%;
+	text-align: left;
+}
+
+.timeline-marker {
+	position: absolute;
+	top: 6px;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	background: black;
+	border: 3px solid white;
+	box-shadow: 0 0 0 2px black;
+	z-index: 2;
+}
+
+.timeline-left .timeline-marker {
+	right: -8.5%;
+}
+
+.timeline-right .timeline-marker {
+	left: -8.5%;
+}
+
+.timeline-card {
+	display: inline-block;
+	background: rgba(233,233,233,0.5);
+	border-radius: 6px;
+	padding: 1.2em 1.4em;
+	max-width: 100%;
+}
+
+.timeline-logo-link {
+	display: inline-block;
+}
+
+.timeline-logo {
+	max-width: 140px;
+	max-height: 60px;
+	width: auto;
 	height: auto;
+	object-fit: contain;
+	margin-bottom: 0.6em;
 }
 
-
-/* ------------------------------------------------------------------------------------------ */
-
-/* project hover */
-.proj-container {
-	margin-left: 3vw;
-	margin-right: 3vw;
+.timeline-logo.project-thumb {
+	max-width: 100%;
+	max-height: 160px;
+	border-radius: 4px;
 }
 
-.proj-old, .proj-new {
-   transition: opacity 0.4s linear;
-	display: flex;
-	align-items: center;
-   height: 20px;
-	max-width: 350px;
+.timeline-title {
+	margin: 0 0 0.2em 0;
+	font-size: 1.2em;
 }
-.proj-old {
-   position: relative;
-   top: -10px;
-	text-align: left;
-	margin: 0 auto;
-	font-size: 1.1em;
 
-}
-.proj-new {
-   position: relative;
-   top: 10px;
-   opacity: 0;
-   z-index: 1;
+.timeline-date {
+	display: block;
+	font-family: "Source Code Pro", monospace;
 	font-size: 0.75em;
-	width: 110%;
-
-}
-.proj-container:hover .proj-old{
-	opacity: 0;
-}
-.proj-container:hover .proj-new{
-	opacity: 1;
-	filter: drop-shadow(0 0 3px white);
+	color: #555;
+	margin-bottom: 0.6em;
 }
 
-
-/* ------------------------------------------------------------------------------------------ */
-
-/* experience hover */
-
-.exp-container {
-	margin-left: 3vw;
+.timeline-text {
+	margin: 0;
+	font-size: 0.85em;
+	line-height: 1.5;
 }
 
-.exp-old, .exp-new {
-   transition: opacity 0.4s linear;
-	display: flex;
-	align-items: center;
-   height: 20px;
-	max-width: 375px;
-}
-.exp-old {
-   position: relative;
-   top: 0px;
-	text-align: left;
-	margin: 0 auto;
-
-}
-.exp-new {
+/* divider that breaks the spine between Experiences and Projects */
+.timeline-divider {
 	position: relative;
-   top: 35px;
-   opacity: 0;
-   z-index: 1;
-	font-size: 0.75em;
-	/* width: 80%; */
-}
-.exp-container:hover .exp-old{
-	opacity: 0;
-}
-.exp-container:hover .exp-new{
-	opacity: 1;
-	filter: drop-shadow(0 0 3px white);
+	text-align: center;
+	margin: 2vh 0 6vh;
+	z-index: 2;
 }
 
+.timeline-divider span {
+	position: relative;
+	display: inline-block;
+	background: white;
+	padding: 0.3em 1.5em;
+	font-weight: bold;
+	font-size: 1.6em;
+	/* border: 2px solid black; */
+	border-radius: 999px;
+}
+
+/* stack single-column on narrower viewports */
+@media (max-width: 800px) {
+	.timeline::before {
+		left: 20px;
+	}
+	.timeline-item, .timeline-left, .timeline-right {
+		width: calc(100% - 50px);
+		left: 50px !important;
+		text-align: left !important;
+	}
+	.timeline-left .timeline-marker,
+	.timeline-right .timeline-marker {
+		left: -37px;
+		right: auto;
+	}
+}
+
+/* ------------------------------------------------------------------------------------------ */
+
+/* Experience rows: company fixed on the left, role + date + description fixed on the right */
+
+.timeline-row {
+	position: relative;
+	display: flex;
+	align-items: flex-start;
+	margin-bottom: 6vh;
+}
+
+.timeline-side {
+	flex: 1 1 0;
+	box-sizing: border-box;
+}
+
+.timeline-marker-row {
+	flex: 0 0 16px;
+	width: 16px;
+	height: 16px;
+	margin-top: 6px;
+	border-radius: 50%;
+	background: black;
+	border: 3px solid white;
+	box-shadow: 0 0 0 2px black;
+	z-index: 2;
+}
+
+.timeline-company-side {
+	text-align: right;
+	padding-right: 2.5vw;
+}
+
+.timeline-company {
+	margin: 0;
+	font-size: 1.2em;
+}
+
+.timeline-company a {
+	border-bottom: 2px solid black;
+}
+
+.timeline-role-side {
+	text-align: left;
+	padding-left: 2.5vw;
+	padding-top: 0.15em;
+}
+
+.timeline-role {
+	display: block;
+	font-weight: bold;
+	font-size: 1.05em;
+}
+
+.timeline-role-side .timeline-date {
+	display: block;
+	font-family: "Source Code Pro", monospace;
+	font-size: 0.75em;
+	color: #555;
+	margin-top: 0.3em;
+}
+
+.timeline-role-side .timeline-text {
+	margin-top: 0.6em;
+}
+
+/* stack single-column on narrower viewports */
+@media (max-width: 800px) {
+	.timeline-row {
+		flex-direction: column;
+	}
+	.timeline-company-side,
+	.timeline-role-side {
+		text-align: left;
+		padding: 0 0 0 50px;
+	}
+	.timeline-marker-row {
+		position: absolute;
+		left: 20px;
+		top: 6px;
+	}
+}
 
 
 /* ------------------------------------------------------------------------------------------ */
@@ -466,7 +532,7 @@ p, h1 {
 	position: relative;
 	font-weight: normal;
 	font-family: "Source Code Pro", monospace;
-	font-size: 1.7em;
+	font-size: max(1.7em, 12px);
 	bottom: calc(-35vh + 50px);
 }
 
@@ -620,14 +686,6 @@ footer {
 
 /* ------------------------------------------------------------------------------------------ */
 
-/* makes the background always the size of the viewport */
-.full-viewport-height {
-	height: 70em;
-	height: 100vh;
-
-}
-/* ------------------------------------------------------------------------------------------ */
-
 /* decorative underline css */
 .short-underline {
     position: relative; /* Required for positioning pseudo-element */
@@ -661,4 +719,364 @@ footer {
     height: 4px; /* Height of the underline */
     background-color: white; /* Color of the underline */
 	 z-index: 2;
+}
+
+/* ========================================================================================== */
+/* RESPONSIVE LAYOUT                                                                           */
+/* ========================================================================================== */
+
+/* Make sizing predictable and prevent horizontal scrolling on small screens. */
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: clamp(14px, 1.25vw, 18px);
+	overflow-x: hidden;
+}
+
+body {
+	overflow-x: hidden;
+}
+
+img, svg, canvas {
+	max-width: 100%;
+}
+
+/* ------------------------------------------------------------------------------------------ */
+/* Tablet / smaller laptop                                                                     */
+
+@media (max-width: 900px) {
+
+	/* Let content sections grow naturally instead of being forced into a viewport height. */
+	.full-viewport-height {
+		min-height: 100vh;
+		height: auto;
+	}
+
+	#secondbg {
+		max-height: none;
+		padding-bottom: 5vh;
+	}
+
+	#thirdbg {
+		padding: 4vh 3vw 8vh;
+	}
+
+	/* Hero positioning is reduced so it does not crowd the top/bottom of a tablet. */
+	header {
+		bottom: calc(-28vh + 45px);
+	}
+
+	#blueline {
+		width: 75%;
+		bottom: calc(-28vh + 35px);
+	}
+
+	#typewriter {
+		bottom: calc(-28vh + 45px);
+		font-size: clamp(16px, 2.8vw, 28px);
+		max-width: 92%;
+	}
+
+	#homepage {
+		bottom: calc(-23vh);
+		margin-left: 6%;
+		margin-right: 6%;
+	}
+
+	/* About Me: switch to stacked cards before the two columns become cramped. */
+	.container {
+		flex-direction: column;
+		gap: 2vh;
+		padding: 20px 5vw;
+	}
+
+	.about_info {
+		width: 100%;
+		margin: 0;
+		padding: 1em;
+	}
+
+	/* Skills can wrap rather than forcing five narrow columns. */
+	.skill_list {
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 2.5vw;
+		padding: 0 3vw;
+	}
+
+	.skill1, .skill2, .skill3, .skill4, .skill5 {
+		flex: 0 1 calc(33.333% - 2vw);
+		max-width: none;
+		min-width: 150px;
+	}
+
+	/* Keep the existing 800px timeline breakpoint, but make its cards truly fluid. */
+	.timeline {
+		width: min(100%, 900px);
+		padding: 2vh 2vw 0;
+	}
+
+	.timeline-item,
+	.timeline-left,
+	.timeline-right {
+		width: calc(100% - 50px);
+	}
+
+	.timeline-card {
+		width: 100%;
+		display: block;
+	}
+
+	.timeline-row {
+		margin-bottom: 5vh;
+	}
+
+	.timeline-company-side,
+	.timeline-role-side {
+		min-width: 0;
+	}
+
+	.timeline-title {
+		font-size: clamp(1.05em, 2.2vw, 1.2em);
+	}
+
+	.timeline-text {
+		font-size: clamp(0.9em, 1.8vw, 1em);
+	}
+
+	.timeline-divider span {
+		font-size: clamp(1.25em, 3vw, 1.6em);
+	}
+
+	footer {
+		min-width: 0;
+		width: 100%;
+		padding: 0 12px 4px;
+	}
+}
+
+/* ------------------------------------------------------------------------------------------ */
+/* Phone                                                                                      */
+
+@media (max-width: 600px) {
+
+	html {
+		font-size: 16px;
+	}
+
+	/* Keep the hero within a phone-sized viewport without changing its desktop appearance. */
+	.full-viewport-height {
+		min-height: 100svh;
+	}
+
+	header {
+		font-size: clamp(18px, 7vw, 28px);
+		bottom: calc(-25vh + 40px);
+	}
+
+	#blueline {
+		width: 80%;
+		bottom: calc(-25vh + 32px);
+	}
+
+	#typewriter {
+		bottom: calc(-25vh + 40px);
+		font-size: clamp(14px, 4.5vw, 22px);
+		max-width: 94%;
+	}
+
+	#homepage {
+		bottom: calc(-19vh);
+		margin-left: 5%;
+		margin-right: 5%;
+		font-size: 14px;
+	}
+
+	#homepage br {
+		display: none;
+	}
+
+	/* About heading and cards get comfortable phone spacing. */
+	#about > .short-underline {
+		font-size: clamp(1.7em, 8vw, 2.3em) !important;
+		padding-left: 5vw !important;
+	}
+
+	.container {
+		padding: 20px 4vw;
+		gap: 2vh;
+	}
+
+	.about_info {
+		padding: 1em;
+		line-height: 1.5;
+	}
+
+	/* Two skill columns on phones; this is much easier to scan than five tiny columns. */
+	.skill_list {
+		gap: 2vh 3vw;
+		padding: 0 4vw;
+	}
+
+	.skill1, .skill2, .skill3, .skill4, .skill5 {
+		flex: 0 1 calc(50% - 3vw);
+		min-width: 0;
+		font-size: 1.15em;
+		top: 1vh;
+	}
+
+	.icon-container,
+	.software-icon-container {
+		grid-template-columns: repeat(2, 55px);
+		grid-template-rows: repeat(2, 55px);
+		gap: 6px;
+		margin-top: 2.5vh;
+	}
+
+	#skill_typewriter {
+		font-size: 12px;
+		margin-top: 3vh;
+		max-width: 94%;
+	}
+
+	/* Timeline heading */
+	#thirdbg > .short-underline {
+		font-size: clamp(1.8em, 8vw, 2.5em) !important;
+		top: 1vh !important;
+		margin-bottom: 5vh !important;
+	}
+
+	.timeline {
+		width: 100%;
+		padding: 1vh 3vw 0 0;
+		background: rgba(255, 255, 255, 0.75);
+	}
+
+	/* The existing 800px rules move the spine to 20px. Keep all content comfortably inside it. */
+	.timeline-item,
+	.timeline-left,
+	.timeline-right {
+		width: calc(100% - 48px);
+		left: 48px !important;
+	}
+
+	.timeline::before {
+		left: 18px;
+		width: 2px;
+	}
+
+	.timeline-left .timeline-marker,
+	.timeline-right .timeline-marker {
+		left: -38px;
+		right: auto;
+		width: 14px;
+		height: 14px;
+	}
+
+	.timeline-row {
+		margin-bottom: 4vh;
+	}
+
+	.timeline-company-side,
+	.timeline-role-side {
+		padding-left: 42px;
+	}
+
+	.timeline-company {
+		font-size: 1.05em;
+	}
+
+	.timeline-role {
+		font-size: 0.98em;
+	}
+
+	.timeline-date {
+		font-size: 0.72em;
+	}
+
+	.timeline-text {
+		font-size: 0.9em;
+		line-height: 1.5;
+	}
+
+	.timeline-divider {
+		margin: 1vh 0 4vh;
+	}
+
+	.timeline-divider span {
+		font-size: 1.25em;
+		padding: 0.3em 1em;
+	}
+
+	.timeline-title {
+		font-size: 1.1em;
+	}
+
+	/* Avoid the fixed footer extending beyond the phone viewport. */
+	footer {
+		font-size: 13px;
+		padding: 0 8px 2px;
+	}
+
+	#linkedin-circle {
+		width: 24px;
+		top: 6px;
+	}
+
+	.wrap {
+		max-width: 260px;
+	}
+
+	.old, .new {
+		font-size: 16px;
+	}
+
+	.short-underline,
+	#white-underline {
+		font-size: clamp(1.8em, 8vw, 2.5em);
+	}
+}
+
+/* ------------------------------------------------------------------------------------------ */
+/* Very small phones                                                                          */
+
+@media (max-width: 380px) {
+	#typewriter {
+		font-size: 13px;
+	}
+
+	#homepage {
+		font-size: 13px;
+	}
+
+	.skill1, .skill2, .skill3, .skill4, .skill5 {
+		font-size: 1.05em;
+	}
+
+	.timeline {
+		padding-right: 2vw;
+	}
+
+	.timeline-item,
+	.timeline-left,
+	.timeline-right {
+		width: calc(100% - 44px);
+		left: 44px !important;
+	}
+
+	.timeline::before {
+		left: 16px;
+	}
+
+	.timeline-left .timeline-marker,
+	.timeline-right .timeline-marker {
+		left: -35px;
+	}
+
+	.timeline-company-side,
+	.timeline-role-side {
+		padding-left: 38px;
+	}
 }
